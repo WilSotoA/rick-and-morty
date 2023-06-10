@@ -1,8 +1,9 @@
-import Card from "./Card";
+import Card from "../Card/Card";
+import './Cards.css'
 
 export default function Cards({ characters }) {
   return (
-    <div>
+    <div className="cards-container">
       {characters &&
         characters.map((characters) => {
           return (

@@ -1,0 +1,56 @@
+:root{
+    --light-blue: rgb(105, 183, 219);
+}
+
+.Card {
+    border: 0.2rem solid var(--light-blue);
+    border-radius: 2rem;
+    -webkit-border-radius: 2rem;
+    -moz-border-radius: 2rem;
+    -ms-border-radius: 2rem;
+    -o-border-radius: 2rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.button-close {
+    width: 20%;
+    background-color: rgb(243, 110, 110);
+    color: rgb(15, 45, 49);
+    margin-top: 0.2rem;
+    margin-right: 1rem;
+    padding: 0.1rem;
+    border-radius: 0.2rem;
+    -webkit-border-radius: 0.2rem;
+    -moz-border-radius: 0.2rem;
+    -ms-border-radius: 0.2rem;
+    -o-border-radius: 0.2rem;
+    font-weight: bolder;
+    font-size: larger;
+    cursor: pointer;
+    align-self: flex-end;
+}
+
+.button-close:hover {
+    background-color: rgb(221, 23, 23);
+    cursor: pointer;
+    color: blanchedalmond;
+    transition: background-color, color 0.4s ease-in-out;
+    -webkit-transition: background-color, color 0.4s ease-in-out;
+    -moz-transition: background-color, color 0.4s ease-in-out;
+    -ms-transition: background-color, color 0.4s ease-in-out;
+    -o-transition: background-color, color 0.4s ease-in-out;
+}
+.image-character {
+    width: 88%;
+    border-radius: 2rem;
+    -webkit-border-radius: 2rem;
+    -moz-border-radius: 2rem;
+    -ms-border-radius: 2rem;
+    -o-border-radius: 2rem;
+    margin: auto;
+    margin-bottom: 2rem;
+    box-shadow: 0.5rem 0.5rem 0.9rem var(--light-blue);
+    border: 0.2rem solid var(--light-blue);
+}
