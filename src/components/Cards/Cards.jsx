@@ -4,7 +4,7 @@ import './Cards.css'
 export default function Cards({onClose,characters}) {
   return (
     <div className="cards-container">
-      {console.log(characters)}
+      {/* {console.log(characters)} */}
       {characters &&
         characters.map((characters) => {
           return (

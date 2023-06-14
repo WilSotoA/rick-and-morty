@@ -3,6 +3,9 @@
    margin: 0;
    box-sizing: border-box;
 }
+body {
+   background-image: url(https://images8.alphacoders.com/633/633270.png);
+}
 .App {
    text-align: center;
 }
