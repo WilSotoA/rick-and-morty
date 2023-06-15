@@ -1,0 +1,42 @@
+:root{
+    --ligthblue: rgb(139, 211, 245);
+}
+.container-card {
+    width: 90%;
+    height: 70vh;
+    margin: 2rem auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    justify-items: center;
+    align-items: center
+}
+.container-info {
+    width: 80%;
+    height: min-content;
+    text-align: center;
+    color: rgb(224, 241, 255);
+    background-color: rgba(84, 207, 255, 0.507);
+    border-radius: 2rem;
+    -webkit-border-radius: 2rem;
+    -moz-border-radius: 2rem;
+    -ms-border-radius: 2rem;
+    -o-border-radius: 2rem;
+    padding: 1rem;
+    box-shadow: 0.5rem 0.5rem 0.5rem var(--ligthblue)
+}
+.container-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container-image img {
+    width: 100%;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border: 2px inset var(--ligthblue);
+    object-fit: cover;
+}

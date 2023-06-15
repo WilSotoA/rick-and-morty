@@ -1,5 +1,4 @@
 .container-search {
-    margin-top: 2rem;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -18,7 +17,16 @@
     font-family: sans-serif;
     outline: none;
 }
-
+.search:focus{
+    box-shadow: 0rem 0rem 1rem 0.5rem var(--light-blue);
+    font-weight: bold;
+    border: 5px solid antiquewhite;
+    transition: border, box-shadow 1s ease-out;
+    -webkit-transition: border, box-shadow 1s ease-out;
+    -moz-transition: border, box-shadow 1s ease-out;
+    -ms-transition: border, box-shadow 1s ease-out;
+    -o-transition: border, box-shadow 1s ease-out;
+}
 .container-search button {
     border-radius: 1rem;
     border: 5px solid var(--light-blue);

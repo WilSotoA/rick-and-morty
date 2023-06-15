@@ -1,8 +1,37 @@
 .Nav {
     display: flex;
-    align-content: stretch;
+    width: 95%;
+    margin: 0 auto;
     flex-direction: row;
-    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
     align-items: center;
     gap: 2rem;
+    margin-top: 0.5rem;
+    background-color: rgba(7, 143, 255, 0.253);
+    padding: 1rem;
+    border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+}
+.Nav-button {
+    width: 10rem;
+    border-radius: 1rem;
+    border: 5px solid var(--light-blue);
+    background-color: var(--light-blue);
+    font-size: large;
+    color: rgba(75, 28, 247, 0.588);
+    font-weight: bolder;
+    cursor: pointer;
+}
+.Nav-button:hover {
+    box-shadow: 0rem 0rem 1rem 0.5rem var(--light-blue);
+    color: rgb(255, 255, 255);
+    transition: color 1.5s ease;
+    -webkit-transition: color 1.5s ease;
+    -moz-transition: color 1.5s ease;
+    -ms-transition: color 1.5s ease;
+    -o-transition: color 1.5s ease;
 }

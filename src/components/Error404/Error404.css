@@ -1,0 +1,42 @@
+:root{
+    --ligthblue: rgb(139, 211, 245);
+}
+.error-container {
+    text-align: center;
+    margin-top: 50vh;
+    transform: translateY(-50%);
+    color: var(--ligthblue);
+  }
+  
+  .error-title {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+  }
+  
+  .error-message {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .error-link {
+    color: var(--ligthblue);
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    box-shadow: 0rem 0rem 0.2rem  var(--ligthblue)  ;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+}
+  
+  .error-link:hover {
+    background-color: rgba(139, 211, 245, 0.411);
+    color: beige;
+    transition: color 1s ease;
+    -webkit-transition: color 1s ease;
+    -moz-transition: color 1s ease;
+    -ms-transition: color 1s ease;
+    -o-transition: color 1s ease;
+}

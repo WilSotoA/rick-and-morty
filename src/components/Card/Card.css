@@ -1,7 +1,9 @@
 :root {
   --light-blue: rgb(105, 183, 219);
 }
-
+* {
+  text-decoration: none;
+}
 .Card {
   display: grid;
   grid-auto-columns: 1fr; 
@@ -34,8 +36,11 @@
   border-radius: 2rem;
   font-size: 18px;
   padding: 0.5rem;
+  text-decoration: none;
 }
-
+.Card-name:active{
+  color: rgb(185, 241, 239);
+}
 .button-close {
   grid-area: button-close;
   justify-self: end;
