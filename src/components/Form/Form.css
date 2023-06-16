@@ -1,0 +1,114 @@
+:root {
+    --lightblue: rgba(139, 211, 245, 0.8);
+    --white: rgb(224, 241, 255);
+    --ligthgreen: rgb(76, 175, 80);
+    --ligthred: rgba(244, 37, 37, 0.62);
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 50%;
+}
+
+.form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container-form {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    background-color: var(--lightblue);
+    border-radius: 2rem;
+    padding: 1rem 4rem;
+    text-align: center;
+    -webkit-border-radius: 2rem;
+    -moz-border-radius: 2rem;
+    -ms-border-radius: 2rem;
+    -o-border-radius: 2rem;
+}
+.container-input {
+    width: 100%;
+}
+
+.form-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--ligthgreen);
+}
+
+label {
+    display: block;
+    margin-bottom: 0.2rem;
+    color: var(--white);
+    font-weight: bolder;
+    font-size: 1.6rem;
+
+}
+
+input[type="email"],
+input[type="password"],
+button[type="submit"] {
+    width: 90%;
+    text-align: center;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgb(204, 204, 204);
+    -webkit-border-radius: 0.5rem;
+    -moz-border-radius: 0.5rem;
+    -ms-border-radius: 0.5rem;
+    -o-border-radius: 0.5rem;
+    outline: none;
+    font-weight: 700;
+}
+
+button[type="submit"] {
+    margin-top: 1.5rem;
+    background-color: rgb(76, 119, 175);
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--ligthgreen);
+    transition: background-color 0.5s ease;
+    -webkit-transition: background-color 0.5s ease;
+    -moz-transition: background-color 0.5s ease;
+    -ms-transition: background-color 0.5s ease;
+    -o-transition: background-color 0.5s ease;
+}
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border: 1px solid var(--ligthgreen);
+  color: var(--ligthgreen);
+  box-shadow: 0rem 0rem 0rem 0.1rem var(--ligthgreen);
+  transition: border 0.3s ease;
+  -webkit-transition: border 0.3s ease;
+  -moz-transition: border 0.3s ease;
+  -ms-transition: border 0.3s ease;
+  -o-transition: border 0.3s ease;
+}
+.text-error {
+    width: 90%;
+    color: var(--ligthred);
+    font-weight: bold;
+    text-align: center;
+    margin: 0.5rem auto;
+}
+.input-error {
+    color: var(--ligthred);
+    box-shadow: 0rem 0rem 0rem 0.1rem var(--ligthred);
+}
