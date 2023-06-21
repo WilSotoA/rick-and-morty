@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
+import { connect } from "react-redux";
 import "./App.css";
 import Cards from "./components/Cards/Cards";
 import Nav from "./components/Nav/Nav";
@@ -9,8 +10,9 @@ import Detail from "./components/Detail/Detail";
 import Error404 from "./components/Error404/Error404";
 import Form from "./components/Form/Form";
 import Favorites from "./components/Favorites/Favorites";
+import { removeFav } from "./redux/actions";
 
-function App() {
+function App({ myFavorites, removeFav }) {
    const [characters, setCharacters] = useState([]);
    const navigate = useNavigate();
    const [access, setAccess] = useState(false);
@@ -50,6 +52,8 @@ function App() {
       );
    }
    function onClose(id) {
+      const searchFavorites = myFavorites.find((favorite) => favorite.id === parseInt(id));
+      if (searchFavorites) removeFav(parseInt(id))
       const charactersFilter = characters.filter(
          (character) => character.id !== parseInt(id)
       );
@@ -72,5 +76,16 @@ function App() {
       </div>
    );
 }
-
-export default App;
+export function mapStateToProps(state) {
+   return {
+      myFavorites: state.myFavorites,
+   };
+}
+export function mapDispatchToProps(dispatch) {
+   return {
+      removeFav: function (id) {
+         dispatch(removeFav(id));
+      }
+   }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(App);
