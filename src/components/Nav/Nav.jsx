@@ -11,6 +11,9 @@ export default function Nav({ onSearch, logout }) {
       <Link to={"/About"}>
         <button className="Nav-button">About</button>
       </Link>
+      <Link to={"/favorites"}>
+        <button className="Nav-button">Favorites</button>
+      </Link>
       <SearchBar onSearch={onSearch} />
       <button className="Nav-button" onClick={logout}>Log Out</button>
     </div>
