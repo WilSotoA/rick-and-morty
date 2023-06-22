@@ -3,5 +3,14 @@
     justify-content: space-around;
     flex-wrap: wrap;
     margin-top: 2rem;
-    gap: 1.2rem;
+    gap: 4rem;
+}
+.paginate {
+    width: 100%;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
 }

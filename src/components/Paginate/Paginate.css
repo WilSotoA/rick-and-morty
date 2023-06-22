@@ -1,0 +1,25 @@
+.numPage {
+    color: var(--white);
+}
+.paginate button {
+    font-weight: bolder;
+    font-size: 1.4rem;
+    color: var(--white);
+    background-color: var(--lightblue);
+    border: 1px solid var(--white);
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    cursor: pointer;
+}
+.paginate button:hover{
+    color: rgba(75, 28, 247, 0.588);
+    border-color: rgba(75, 28, 247, 0.588);
+    transition: border-color 0.5s ease-out, color 0.5s ease-out;
+    -webkit-transition: border-color 0.5s ease-out, color 0.5s ease-out;
+    -moz-transition: border-color 0.5s ease-out, color 0.5s ease-out;
+    -ms-transition: border-color 0.5s ease-out, color 0.5s ease-out;
+    -o-transition: border-color 0.5s ease-out, color 0.5s ease-out;
+}

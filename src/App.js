@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { removeFav, addChar, removeChar } from "./redux/actions";
 import "./App.css";
 import Cards from "./components/Cards/Cards";
 import Nav from "./components/Nav/Nav";
@@ -10,14 +11,13 @@ import Detail from "./components/Detail/Detail";
 import Error404 from "./components/Error404/Error404";
 import Form from "./components/Form/Form";
 import Favorites from "./components/Favorites/Favorites";
-import { removeFav } from "./redux/actions";
 
-function App({ myFavorites, removeFav }) {
-   const [characters, setCharacters] = useState([]);
+export default function App() {
    const navigate = useNavigate();
    const [access, setAccess] = useState(false);
    const EMAIL = "user@gmail.com";
    const PASSWORD = "password1";
+   const dispatch = useDispatch();
 
    function login(userData) {
       if (userData.password === PASSWORD && userData.email === EMAIL) {
@@ -33,8 +33,8 @@ function App({ myFavorites, removeFav }) {
    }
    useEffect(() => {
       !access && navigate('/');
-   }, [access]);
-
+   }, [access, navigate]);
+   const { characters } = useSelector((state) => state)
    const { pathname } = useLocation();
    function onSearch(id) {
       axios(`https://rickandmortyapi.com/api/character/${id}`).then(
@@ -44,7 +44,7 @@ function App({ myFavorites, removeFav }) {
                   (character) => character.id === parseInt(id)
                );
                if (char) return alert("Este personaje ya se encuentra agregado");
-               setCharacters([...characters, data]);
+               dispatch(addChar(data));
             } else {
                window.alert("¡No hay personajes con este ID!");
             }
@@ -52,12 +52,8 @@ function App({ myFavorites, removeFav }) {
       );
    }
    function onClose(id) {
-      const searchFavorites = myFavorites.find((favorite) => favorite.id === parseInt(id));
-      if (searchFavorites) removeFav(parseInt(id))
-      const charactersFilter = characters.filter(
-         (character) => character.id !== parseInt(id)
-      );
-      setCharacters(charactersFilter);
+      dispatch(removeChar(parseInt(id)));
+      dispatch(removeFav(parseInt(id)));
    }
    return (
       <div className="App">
@@ -66,7 +62,7 @@ function App({ myFavorites, removeFav }) {
             <Route path="/" element={<Form login={login} />}></Route>
             <Route
                path="/home"
-               element={<Cards characters={characters} onClose={onClose} />}
+               element={<Cards onClose={onClose} />}
             />
             <Route path="/about" element={<About />} />
             <Route path="/favorites" element={<Favorites onClose={onClose} />} />
@@ -76,16 +72,3 @@ function App({ myFavorites, removeFav }) {
       </div>
    );
 }
-export function mapStateToProps(state) {
-   return {
-      myFavorites: state.myFavorites,
-   };
-}
-export function mapDispatchToProps(dispatch) {
-   return {
-      removeFav: function (id) {
-         dispatch(removeFav(id));
-      }
-   }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(App);
