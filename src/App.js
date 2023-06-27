@@ -37,7 +37,7 @@ export default function App() {
    const { characters } = useSelector((state) => state)
    const { pathname } = useLocation();
    function onSearch(id) {
-      axios(`https://rickandmortyapi.com/api/character/${id}`).then(
+      axios(`http://localhost:3001/rickandmorty/character/${id}`).then(
          ({ data }) => {
             if (data.name) {
                const char = characters.find(
