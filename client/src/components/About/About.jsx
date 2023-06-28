@@ -22,7 +22,7 @@ export default function About() {
       return () => {
         clearInterval(interval);
       };
-    }, []);
+    }, [originalText]);
   return (
     <>
       <h1 className="title">About</h1>

@@ -22,7 +22,7 @@ export default function Card({
         setIsFav(true);
       }
     });
-  }, [myFavorites]);
+  }, [id, myFavorites]);
   function handleFavorite() {
     if (isFav) {
       setIsFav(false);
