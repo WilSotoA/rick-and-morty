@@ -1,4 +1,4 @@
-import { ADD_CHAR, REMOVE_CHAR, ADD_FAV, REMOVE_FAV, FILTER, ORDER, PREV, NEXT } from "./types";
+import { ADD_CHAR, REMOVE_CHAR, SEARCH_CHAR, ADD_FAV, REMOVE_FAV, RESET_CHARACTERS, FILTER, ORDER, PREV, NEXT } from "./types";
 import axios from 'axios';
 
 export function addChar(char) {
@@ -15,29 +15,42 @@ export function removeChar(id) {
     };
 }
 
+export function searchChar(char) {
+    return {
+        type: SEARCH_CHAR,
+        payload: char,
+    };
+}
+
+export function resetCharacters() {
+    return {
+        type: RESET_CHARACTERS,
+    };
+}
+
 export const addFav = (character) => {
     const endpoint = 'http://localhost:3001/rickandmorty/fav';
     return (dispatch) => {
-       axios.post(endpoint, character).then(({ data }) => {
-          return dispatch({
-             type: 'ADD_FAV',
-             payload: data,
-          });
-       });
+        axios.post(endpoint, character).then(({ data }) => {
+            return dispatch({
+                type: ADD_FAV,
+                payload: data,
+            });
+        });
     };
- };
+};
 
- export const removeFav = (id) => {
+export const removeFav = (id) => {
     const endpoint = 'http://localhost:3001/rickandmorty/fav/' + id;
     return (dispatch) => {
-       axios.delete(endpoint).then(({ data }) => {
-          return dispatch({
-             type: 'REMOVE_FAV',
-             payload: data,
-       });
-       });
+        axios.delete(endpoint).then(({ data }) => {
+            return dispatch({
+                type: REMOVE_FAV,
+                payload: data,
+            });
+        });
     };
- };
+};
 
 export const filterCards = (gender) => {
     return {

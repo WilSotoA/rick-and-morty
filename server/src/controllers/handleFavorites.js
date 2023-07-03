@@ -2,6 +2,7 @@ let myFavorites = [];
 
 function postFav(req, res) {
     const { id, status, name, species, origin, image, gender } = req.body;
+    if (!id || !image || !name) return res.status(404).json({ error: 'Not Found' });
     myFavorites.push({
         id,
         status,
@@ -16,7 +17,8 @@ function postFav(req, res) {
 
 function deleteFav(req, res) {
     const { id } = req.params;
-    const favorites = myFavorites.filter(fav => fav.id === id);
+    if (!id) return res.status(404).json({ error: 'Invalid ID'});
+    const favorites = myFavorites.filter(fav => fav.id !== parseInt(id));
     myFavorites = favorites;
     res.status(200).json(myFavorites);
 }

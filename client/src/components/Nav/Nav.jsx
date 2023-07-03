@@ -1,12 +1,15 @@
 import React from "react";
 import SearchBar from "../SearchBar/SearchBar";
+import { useDispatch } from "react-redux";
+import { resetCharacters } from "../../redux/actions";
 import "./Nav.css";
 import { Link } from "react-router-dom";
 export default function Nav({ onSearch, logout }) {
+  const dispatch = useDispatch();
   return (
     <div className="Nav">
       <Link to={"/home"}>
-        <button className="Nav-button Nav-button-home">Home</button>
+        <button onClick={() => dispatch(resetCharacters())} className="Nav-button Nav-button-home">Home</button>
       </Link>
       <Link to={"/About"}>
         <button className="Nav-button">About</button>

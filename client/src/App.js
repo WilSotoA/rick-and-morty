@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { removeFav, addChar, removeChar } from "./redux/actions";
+import { removeFav, addChar, removeChar, searchChar } from "./redux/actions";
 import "./App.css";
 import Cards from "./components/Cards/Cards";
 import Nav from "./components/Nav/Nav";
@@ -20,11 +20,13 @@ export default function App() {
    function login(userData) {
       const { email, password } = userData;
       const URL = 'http://localhost:3001/rickandmorty/login/';
-      axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
-         const { access } = data;
-         setAccess(data);
-         access && navigate('/home');
-      });
+      axios(URL + `?email=${email}&password=${password}`)
+         .then(({ data }) => {
+            const { access } = data;
+            setAccess(data);
+            access && navigate('/home');
+         })
+         .catch((err) => { console.error(err); });
    }
 
    function logout() {
@@ -36,17 +38,21 @@ export default function App() {
       !access && navigate('/');
    }, [access, navigate]);
 
+   useEffect(() => {
+      axios
+        .get(`http://localhost:3001/rickandmorty/allcharacters`)
+        .then((result) => {
+          dispatch(addChar(result.data));
+        });
+    }, []);
+
    const { characters } = useSelector((state) => state)
    const { pathname } = useLocation();
    function onSearch(id) {
       axios(`http://localhost:3001/rickandmorty/character/${id}`).then(
          ({ data }) => {
             if (data.name) {
-               const char = characters.find(
-                  (character) => character.id === parseInt(id)
-               );
-               if (char) return alert("Este personaje ya se encuentra agregado");
-               dispatch(addChar(data));
+               dispatch(searchChar(data));
             } else {
                window.alert("¡No hay personajes con este ID!");
             }
@@ -58,7 +64,7 @@ export default function App() {
       dispatch(removeChar(parseInt(id)));
       dispatch(removeFav(parseInt(id)));
    }
-   
+
    return (
       <div className="App">
          {pathname === "/" ? null : <Nav onSearch={onSearch} logout={logout} />}

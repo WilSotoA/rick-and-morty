@@ -1,8 +1,9 @@
-import { ADD_CHAR, REMOVE_CHAR, ADD_FAV, REMOVE_FAV, FILTER, ORDER, PREV, NEXT } from "./types";
+import { ADD_CHAR, REMOVE_CHAR, SEARCH_CHAR, ADD_FAV, REMOVE_FAV, RESET_CHARACTERS, FILTER, ORDER, PREV, NEXT } from "./types";
 
 const initialState = {
     characters: [],
     allCharacters: [],
+    allFavorites: [],
     myFavorites: [],
     numPage: 1,
     numCards: 4
@@ -11,37 +12,58 @@ const initialState = {
 export default function reducer(state = initialState, { type, payload }) {
     switch (type) {
         case ADD_CHAR:
+            if (Array.isArray(payload)) {
+                return {
+                    ...state,
+                    characters: [...payload],
+                    allCharacters: [...payload]
+                };
+            }
             return {
                 ...state,
-                characters: [payload, ...state.characters],
+                characters: [payload, ...state.allCharacters],
+                allCharacters: [payload, ...state.allCharacters]
             };
         case REMOVE_CHAR:
-            const newCharacters = state.characters.filter((character) => character.id !== payload);
+            const newCharacters = state.allCharacters.filter((character) => character.id !== payload);
             return {
                 ...state,
                 characters: newCharacters,
+                allCharacters: newCharacters
+            };
+        case SEARCH_CHAR:
+            return {
+                ...state,
+                characters: [payload]
             };
         case ADD_FAV:
             return {
                 ...state,
                 myFavorites: payload,
-                allCharacters: payload
+                allFavorites: payload
             };
         case REMOVE_FAV:
             return {
                 ...state,
-                myFavorites: payload
+                myFavorites: payload,
+                allFavorites: payload
+
+            };
+        case RESET_CHARACTERS:
+            return {
+                ...state,
+                characters: [...state.allCharacters]
             };
         case FILTER:
             let newListCh = null;
             payload === 'allCharacters'
-                ? newListCh = state.allCharacters
-                : newListCh = state.allCharacters.filter(character => character.gender === payload);
+                ? newListCh = state.allFavorites
+                : newListCh = state.allFavorites.filter(favorite => favorite.gender === payload);
             return { ...state, myFavorites: newListCh };
         case ORDER:
             let orderCh = null;
-            if (payload.toLowerCase() === 'a') { orderCh = state.allCharacters.sort((a, b) => a.id - b.id) };
-            if (payload.toLowerCase() === 'd') { orderCh = state.allCharacters.sort((a, b) => b.id - a.id) };
+            if (payload.toLowerCase() === 'a') { orderCh = state.allFavorites.sort((a, b) => a.id - b.id) };
+            if (payload.toLowerCase() === 'd') { orderCh = state.allFavorites.sort((a, b) => b.id - a.id) };
             return {
                 ...state, myFavorites: orderCh,
             }
