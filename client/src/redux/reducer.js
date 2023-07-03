@@ -24,12 +24,14 @@ export default function reducer(state = initialState, { type, payload }) {
         case ADD_FAV:
             return {
                 ...state,
-                myFavorites: [...state.myFavorites, payload],
-                allCharacters: [...state.myFavorites, payload]
-            }
+                myFavorites: payload,
+                allCharacters: payload
+            };
         case REMOVE_FAV:
-            const newList = state.myFavorites.filter(favorite => favorite.id !== parseInt(payload));
-            return { ...state, myFavorites: newList, allCharacters: newList };
+            return {
+                ...state,
+                myFavorites: payload
+            };
         case FILTER:
             let newListCh = null;
             payload === 'allCharacters'

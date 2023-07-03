@@ -15,25 +15,27 @@ import Favorites from "./components/Favorites/Favorites";
 export default function App() {
    const navigate = useNavigate();
    const [access, setAccess] = useState(false);
-   const EMAIL = "user@gmail.com";
-   const PASSWORD = "password1";
    const dispatch = useDispatch();
 
    function login(userData) {
-      if (userData.password === PASSWORD && userData.email === EMAIL) {
-         setAccess(true);
-         navigate("/home");
-      } else {
-         alert("User or password incorrect")
-      }
+      const { email, password } = userData;
+      const URL = 'http://localhost:3001/rickandmorty/login/';
+      axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
+         const { access } = data;
+         setAccess(data);
+         access && navigate('/home');
+      });
    }
+
    function logout() {
       setAccess(false);
       navigate("/");
    }
+
    useEffect(() => {
       !access && navigate('/');
    }, [access, navigate]);
+
    const { characters } = useSelector((state) => state)
    const { pathname } = useLocation();
    function onSearch(id) {
@@ -51,10 +53,12 @@ export default function App() {
          }
       );
    }
+
    function onClose(id) {
       dispatch(removeChar(parseInt(id)));
       dispatch(removeFav(parseInt(id)));
    }
+   
    return (
       <div className="App">
          {pathname === "/" ? null : <Nav onSearch={onSearch} logout={logout} />}
