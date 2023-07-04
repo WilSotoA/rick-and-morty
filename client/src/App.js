@@ -17,16 +17,17 @@ export default function App() {
    const [access, setAccess] = useState(false);
    const dispatch = useDispatch();
 
-   function login(userData) {
+   async function login(userData) {
       const { email, password } = userData;
       const URL = 'http://localhost:3001/rickandmorty/login/';
-      axios(URL + `?email=${email}&password=${password}`)
-         .then(({ data }) => {
-            const { access } = data;
-            setAccess(data);
-            access && navigate('/home');
-         })
-         .catch((err) => { console.error(err); });
+      try {
+         const { data } = await axios(URL + `?email=${email}&password=${password}`)
+         const { access } = data;
+         setAccess(data);
+         access && navigate('/home');
+      } catch (error) {
+         console.error(error);
+      }
    }
 
    function logout() {
@@ -40,24 +41,25 @@ export default function App() {
 
    useEffect(() => {
       axios
-        .get(`http://localhost:3001/rickandmorty/allcharacters`)
-        .then((result) => {
-          dispatch(addChar(result.data));
-        });
-    }, []);
+         .get(`http://localhost:3001/rickandmorty/allcharacters`)
+         .then((result) => {
+            dispatch(addChar(result.data));
+         });
+   }, [dispatch]);
 
-   const { characters } = useSelector((state) => state)
    const { pathname } = useLocation();
-   function onSearch(id) {
-      axios(`http://localhost:3001/rickandmorty/character/${id}`).then(
-         ({ data }) => {
-            if (data.name) {
-               dispatch(searchChar(data));
-            } else {
-               window.alert("¡No hay personajes con este ID!");
-            }
+
+   async function onSearch(id) {
+      try {
+         const { data } = await axios(`http://localhost:3001/rickandmorty/character/${id}`)
+         if (data.name) {
+            dispatch(searchChar(data));
+         } else {
+            window.alert("¡No hay personajes con este ID!");
          }
-      );
+      } catch (error) {
+         console.error(error);
+      }
    }
 
    function onClose(id) {
