@@ -10,6 +10,7 @@ export default function SearchBar({onSearch}) {
       setId(e.target.value)
    };
    const add = () => {
+      if (!id) return alert('Por favor inserte un id');
       onSearch(id)
       setId("")
    }

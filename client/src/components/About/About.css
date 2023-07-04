@@ -102,8 +102,8 @@
     }
   }
 .container-image {
-    width: 80%;
-    height: 80%;
+    width: 400px;
+    height: 400px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -126,4 +126,10 @@
     -moz-transform: scale(1.2);
     -ms-transform: scale(1.2);
     -o-transform: scale(1.2);
+}
+@media (max-width: 700px) {
+    .about {
+        grid-template-columns: 1fr;
+        margin: 0;
+    }
 }
