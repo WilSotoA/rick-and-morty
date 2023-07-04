@@ -35,3 +35,26 @@
     -ms-transition: color 1.5s ease;
     -o-transition: color 1.5s ease;
 }
+.burguer-menu {
+    display: flex;
+    /* display: none; */
+    height: 4em;
+    width: 4em;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    cursor: pointer;
+}
+.burguer-item {
+    width: 4em;
+    height: 0.6em;
+    background-color: var(--light-blue);
+    border-radius: 0.5rem;
+    -webkit-border-radius: 0.5rem;
+    -moz-border-radius: 0.5rem;
+    -ms-border-radius: 0.5rem;
+    -o-border-radius: 0.5rem;
+}
+@media (max-width: 1300px) {
+
+}

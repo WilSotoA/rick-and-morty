@@ -9,7 +9,12 @@ export default function Nav({ onSearch, logout }) {
   return (
     <div className="Nav">
       <Link to={"/home"}>
-        <button onClick={() => dispatch(resetCharacters())} className="Nav-button Nav-button-home">Home</button>
+        <button
+          onClick={() => dispatch(resetCharacters())}
+          className="Nav-button Nav-button-home"
+        >
+          Home
+        </button>
       </Link>
       <Link to={"/About"}>
         <button className="Nav-button">About</button>
@@ -18,7 +23,14 @@ export default function Nav({ onSearch, logout }) {
         <button className="Nav-button">Favorites</button>
       </Link>
       <SearchBar onSearch={onSearch} />
-      <button className="Nav-button" onClick={logout}>Log Out</button>
+      <button className="Nav-button" onClick={logout}>
+        Log Out
+      </button>
+      <div className="burguer-menu">
+        <div className="burguer-item"></div>
+        <div className="burguer-item"></div>
+        <div className="burguer-item"></div>
+      </div>
     </div>
   );
 }
