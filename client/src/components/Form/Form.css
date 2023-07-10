@@ -37,6 +37,7 @@ form {
     -ms-border-radius: 2rem;
     -o-border-radius: 2rem;
 }
+
 .container-input {
     width: 100%;
 }
@@ -90,17 +91,19 @@ button[type="submit"]:hover {
     -ms-transition: background-color 0.5s ease;
     -o-transition: background-color 0.5s ease;
 }
+
 input[type="email"]:focus,
 input[type="password"]:focus {
-  border: 1px solid var(--ligthgreen);
-  color: var(--ligthgreen);
-  box-shadow: 0rem 0rem 0rem 0.1rem var(--ligthgreen);
-  transition: border 0.3s ease;
-  -webkit-transition: border 0.3s ease;
-  -moz-transition: border 0.3s ease;
-  -ms-transition: border 0.3s ease;
-  -o-transition: border 0.3s ease;
+    border: 1px solid var(--ligthgreen);
+    color: var(--ligthgreen);
+    box-shadow: 0rem 0rem 0rem 0.1rem var(--ligthgreen);
+    transition: border 0.3s ease;
+    -webkit-transition: border 0.3s ease;
+    -moz-transition: border 0.3s ease;
+    -ms-transition: border 0.3s ease;
+    -o-transition: border 0.3s ease;
 }
+
 .text-error {
     width: 90%;
     color: var(--ligthred);
@@ -108,7 +111,14 @@ input[type="password"]:focus {
     text-align: center;
     margin: 0.5rem auto;
 }
+
 .input-error {
     color: var(--ligthred);
     box-shadow: 0rem 0rem 0rem 0.1rem var(--ligthred);
+}
+
+.input-error:focus {
+    color: var(--ligthred) !important;
+    border-color: var(--ligthred) !important;
+    box-shadow: 0rem 0rem 0rem 0.1rem var(--ligthred) !important;
 }

@@ -14,52 +14,51 @@ export default function Nav({ onSearch, logout }) {
     if (!isMenuClicked) {
       setBurguerClass("burguer-item clicked");
       setMenuClass("burguer-nav");
-
     } else {
       setBurguerClass("burguer-item unclicked");
       setMenuClass("burguer-nav disabled");
     }
     setIsMenuClicked(!isMenuClicked);
-  }
+  };
 
   return (
     <>
-    <div className="Nav">
-      <Link to={"/home"}>
-        <button
-          onClick={() => dispatch(resetCharacters())}
-          className="Nav-button Nav-button-home"
-        >
-          Home
+      <div className="Nav">
+        <Link to={"/home"}>
+          <button
+            onClick={() => dispatch(resetCharacters())}
+            className="Nav-button Nav-button-home"
+          >
+            Home
+          </button>
+        </Link>
+        <Link to={"/About"}>
+          <button className="Nav-button">About</button>
+        </Link>
+        <Link to={"/favorites"}>
+          <button className="Nav-button">Favorites</button>
+        </Link>
+        <SearchBar onSearch={onSearch} />
+        <button className="Nav-button" onClick={logout}>
+          Log Out
         </button>
-      </Link>
-      <Link to={"/About"}>
-        <button className="Nav-button">About</button>
-      </Link>
-      <Link to={"/favorites"}>
-        <button className="Nav-button">Favorites</button>
-      </Link>
-      <SearchBar onSearch={onSearch} />
-      <button className="Nav-button" onClick={logout}>
-        Log Out
-      </button>
-      <div className="burguer-menu" onClick={updateMenu}>
-        <div className={burguerClass}></div>
-        <div className={burguerClass}></div>
-        <div className={burguerClass}></div>
+        <div className="burguer-menu" onClick={updateMenu}>
+          <div className={burguerClass}></div>
+          <div className={burguerClass}></div>
+          <div className={burguerClass}></div>
+        </div>
       </div>
-    </div>
-    <nav className={menuClass}>
-      <Link to={"/About"}>
-        <button className="Nav-button">About</button>
-      </Link>
-      <Link to={"/favorites"}>
-        <button className="Nav-button">Favorites</button>
-      </Link>
-      <SearchBar onSearch={onSearch} />
-      <button className="Nav-button" onClick={logout}>
-        Log Out
-      </button>
+      <nav className={menuClass}>
+        <SearchBar onSearch={onSearch} updateMenu={updateMenu} />
+        <Link to={"/About"} onClick={updateMenu}>
+          <button className="Nav-button">About</button>
+        </Link>
+        <Link to={"/favorites"} onClick={updateMenu}>
+          <button className="Nav-button">Favorites</button>
+        </Link>
+        <button className="Nav-button" onClick={logout}>
+          Log Out
+        </button>
       </nav>
     </>
   );
