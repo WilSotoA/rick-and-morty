@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { removeFav, addChar, removeChar, searchChar } from "./redux/actions";
 import "./App.css";
 import Cards from "./components/Cards/Cards";
@@ -19,7 +19,7 @@ export default function App() {
 
    async function login(userData) {
       const { email, password } = userData;
-      const URL = 'http://localhost:3001/rickandmorty/login/';
+      const URL = 'http://localhost:3001/rickandmorty/login';
       try {
          const { data } = await axios(URL + `?email=${email}&password=${password}`)
          const { access } = data;

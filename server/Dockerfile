@@ -1,9 +1,11 @@
-FROM node 
+FROM node
 
-WORKDIR /server
+WORKDIR /app
 
-COPY package.json .
-COPY package-lock.json .
+COPY ./package*.json ./
+
 RUN npm install
 
 COPY . .
+
+CMD [ "npm", "run", "dev" ]

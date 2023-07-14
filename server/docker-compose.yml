@@ -27,8 +27,7 @@ services:
     ports:
       - $NODE_PORT:$NODE_PORT
     volumes:
-      - /server/node_modules
-      - ./src:/server/src
+      - ./src:/app/src
 
 volumes:
   pgdata:

@@ -20,4 +20,8 @@ server.use(express.json());
 
 server.use('/rickandmorty', allRoutes);
 
+server.get('/', (req, res) => {
+   res.send("hola mundo")
+})
+
 module.exports = server;
