@@ -1,9 +1,8 @@
 const { Sequelize, DataTypes } = require('sequelize');
 require('dotenv').config()
-const { POSTGRES_USER, POSTGRES_PASSWORD, POSTGRES_HOST, POSTGRES_DB, POSTGRES_PORT, DATABASE_URL } = process.env;
+const { DATABASE_URL } = process.env;
 const sequelize = new Sequelize(
-    // `postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}`,
-    'postgres://user:PJly0RDfPPTBN0cWkR2h9EorBkw13zbM@dpg-ciqufblgkuvqadvfc1q0-a/rick_and_morty_1jx1',
+    DATABASE_URL, 
     { logging: false }
 );
 
