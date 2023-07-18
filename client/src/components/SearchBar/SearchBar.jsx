@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { addChar } from "../../redux/actions";
 import axios from "axios";
 import "./SearchBar.css";
+const { REACT_APP_SERVER_URL } = process.env;
 export default function SearchBar({ onSearch }) {
   const [id, setId] = useState("");
   const dispatch = useDispatch();
@@ -16,7 +17,7 @@ export default function SearchBar({ onSearch }) {
   };
   const onRandom = () => {
     const charRandom = Math.floor(Math.random() * 825) + 1;
-    axios(`http://localhost:3001/rickandmorty/character/${charRandom}`).then(
+    axios(`${REACT_APP_SERVER_URL}rickandmorty/character/${charRandom}`).then(
       ({ data }) => {
         if (data.name) {
           dispatch(addChar(data));

@@ -11,6 +11,7 @@ import Detail from "./components/Detail/Detail";
 import Error404 from "./components/Error404/Error404";
 import Form from "./components/Form/Form";
 import Favorites from "./components/Favorites/Favorites";
+const { REACT_APP_SERVER_URL } = process.env;
 
 export default function App() {
    const navigate = useNavigate();
@@ -19,7 +20,8 @@ export default function App() {
 
    async function login(userData) {
       const { email, password } = userData;
-      const URL = 'http://localhost:3001/rickandmorty/login';
+      const URL = `${REACT_APP_SERVER_URL}rickandmorty/login`;
+      
       try {
          const { data } = await axios(URL + `?email=${email}&password=${password}`)
          const { access } = data;
@@ -41,7 +43,7 @@ export default function App() {
 
    useEffect(() => {
       axios
-         .get(`http://localhost:3001/rickandmorty/allcharacters`)
+         .get(`${REACT_APP_SERVER_URL}rickandmorty/allcharacters`)
          .then((result) => {
             dispatch(addChar(result.data));
          });
@@ -51,7 +53,7 @@ export default function App() {
 
    async function onSearch(id) {
       try {
-         const { data } = await axios(`http://localhost:3001/rickandmorty/character/${id}`)
+         const { data } = await axios(`${REACT_APP_SERVER_URL}rickandmorty/character/${id}`)
          if (data.name) {
             dispatch(searchChar(data));
          } else {

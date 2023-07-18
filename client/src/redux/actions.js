@@ -1,5 +1,6 @@
 import { ADD_CHAR, REMOVE_CHAR, SEARCH_CHAR, ADD_FAV, REMOVE_FAV, RESET_CHARACTERS, FILTER, ORDER, PREV, NEXT } from "./types";
 import axios from 'axios';
+const { REACT_APP_SERVER_URL } = process.env;
 
 export function addChar(char) {
     return {
@@ -29,7 +30,7 @@ export function resetCharacters() {
 }
 
 export const addFav = (character) => {
-    const endpoint = 'http://localhost:3001/rickandmorty/fav';
+    const endpoint = `${REACT_APP_SERVER_URL}rickandmorty/fav`;
     return async (dispatch) => {
         try {
             const { data } = await axios.post(endpoint, character);
@@ -44,7 +45,7 @@ export const addFav = (character) => {
 };
 
 export const removeFav = (id) => {
-    const endpoint = 'http://localhost:3001/rickandmorty/fav/' + id;
+    const endpoint = `${REACT_APP_SERVER_URL}rickandmorty/fav/${id}`;
     return async (dispatch) => {
         try {
             const { data } = await axios.delete(endpoint);
