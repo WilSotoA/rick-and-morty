@@ -29,6 +29,7 @@ export default function App() {
          access && navigate('/home');
       } catch (error) {
          console.error(error);
+         alert(error.response.data);
       }
    }
 
